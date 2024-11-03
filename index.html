@@ -4,9 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./css/custom.css">
-    <title>Guess the Album Game</title>
+    <title>Guess the Album Cover Game</title>
 </head>
 <body>
+    <div class="splash-screen" id="splash-screen">
+        <h1>Guess the Album Cover Game</h1>
+        <p>Select a difficulty level:</p>
+        <button id="easy-btn" class="btn difficulty">Easy</button>
+        <button id="medium-btn" class="btn difficulty">Medium</button>
+        <button id="hard-btn" class="btn difficulty">Highly Pretentious</button>
+    </div>
+
+    <div class="game-container" id="game-container" style="display:none;">
+        <h1>Guess the Album Cover</h1>
+        <div class="info">
+            <p>Score: <span id="score">0</span></p>
+            <p>Time Remaining: <span id="timer">60</span>s</p>
+        </div>
+        <div class="image-container">
+            <img id="album-cover" src="" alt="Album cover">
+            <div id="cover-grid"></div>
+        </div>
+        <input type="text" id="guess-input" placeholder="Enter album name...">
+        <button id="submit-btn" class="submit">Submit Guess</button>
+        <p id="feedback"></p>
+    </div>
     
     <script src="./js/app.js"></script>
 </body>
