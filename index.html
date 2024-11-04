@@ -5,29 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="./css/custom.css">
     <title>Guess the Album Cover Game</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="splash-screen" id="splash-screen">
-        <h1>Guess the Album Cover Game</h1>
+        <h1>Guess the Album!</h1>
         <p>Select a difficulty level:</p>
-        <button id="easy-btn" class="btn difficulty">Easy</button>
-        <button id="medium-btn" class="btn difficulty">Medium</button>
-        <button id="hard-btn" class="btn difficulty">Highly Pretentious</button>
+        <button id="medium-btn" class="btn difficulty">Regular</button>
+        <button id="hard-btn" class="btn difficulty">Ultra Pretentious</button>
     </div>
 
     <div class="game-container" id="game-container" style="display:none;">
-        <h1>Guess the Album Cover</h1>
         <div class="info">
-            <p>Score: <span id="score">0</span></p>
-            <p>Time Remaining: <span id="timer">60</span>s</p>
+            <p class="score">Score: <span id="score">0</span> / <span id="totalQuestions">20</span></p>
+            <p class="time">Time Remaining: <span id="timer">60</span>s</p>
+            <p id="pause-btn">
+                <svg width="1200pt" height="1200pt" version="1.1" viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
+                    <path transform="matrix(12 0 0 12 0 -11428)" d="m25.967 966.28h48.961c6.5368 0 11.836 6.5368 11.836 11.836v48.961c0 6.5368-5.2992 11.836-11.836 11.836h-48.961c-6.5368 0-11.836-6.5368-11.836-11.836v-48.961c0-6.5368 5.2992-11.836 11.836-11.836z" fill="none" stroke="#6A3F26" stroke-width="2.3672"/>
+                    <path d="m408.69 359.39h149.89v486.96h-149.89z" fill="#6A3F26"/>
+                    <path d="m652.18 359.39h149.89v486.96h-149.89z" fill="#6A3F26"/>
+                </svg>
+            </p>
         </div>
         <div class="image-container">
             <img id="album-cover" src="" alt="Album cover">
             <div id="cover-grid"></div>
         </div>
-        <input type="text" id="guess-input" placeholder="Enter album name...">
-        <button id="submit-btn" class="submit">Submit Guess</button>
         <p id="feedback"></p>
+        <div class="input-container">
+            <input type="text" id="guess-input" placeholder="Enter album name...">
+            <button id="submit-btn" class="btn submit">Submit Guess</button>
+        </div>
     </div>
     
     <script src="./js/app.js"></script>
