@@ -3,35 +3,30 @@ const mediumAlbums = [
     { name: "Purple Rain", src: "img/purple-rain.jpg" },
     { name: "The White Album", src: "img/white-album.jpg" },
     { name: "The Downward Spiral", src: "img/downward-spiral.jpg" },
-    // { name: "The Tortured Poets Department", src: "img/tortured-poets-department.jpg" },
-    // { name: "The Black Album", src: "img/black-album.jpg" },
-    // { name: "The Miseducation of Lauryn Hill", src: "img/miseducation.jpg" },
-    // { name: "Baduizm", src: "img/baduizm.jpg" },
-    // { name: "Thriller", src: "img/thriller.jpg" },
-    // { name: "The Love Below", src: "img/love-below.jpg" },
-    // { name: "Cowboy Carter", src: "img/cowboy-carter.jpg" },
-    // { name: "OK Computer", src: "img/ok-computer.jpg" },
-    // { name: "Back To Black", src: "img/back-to-black.jpg" },
-    // { name: "Tragic kingdom", src: "img/tragic-kingdom.jpg" },
-    // { name: "Nirvana Unplugged", src: "img/nirvana-unplugged.jpg" },
-    // { name: "Dark Side of the Moon", src: "img/nirvana-unplugged.jpg" },
-    // { name: "Appetite For Destruction", src: "img/appetite-for-destruction.jpg" },
-    // { name: "Illmatic", src: "img/illmatic.jpg" },
-    // { name: "Chris Gaines", src: "img/chris-gaines.jpg" },
-    // { name: "Songs in the Key of Life", src: "img/songs-in-key-of-life.jpg" },
-    // { name: "Pet Sounds", src: "img/pet-sounds.jpg" },
-    // { name: "London Calling", src: "img/london-calling.jpg" },
-];
-
-const hardAlbums = [
-    { name: "In the Court of the Crimson King", src: "img/in-the-court-of-the-crimson-king.jpg" },
-    { name: "Loveless", src: "img/loveless.jpg" }
+    { name: "The Tortured Poets Department", src: "img/tortured-poets-department.jpg" },
+    { name: "The Black Album", src: "img/black-album.jpg" },
+    { name: "The Miseducation of Lauryn Hill", src: "img/miseducation.jpg" },
+    { name: "Baduizm", src: "img/baduizm.jpg" },
+    { name: "Thriller", src: "img/thriller.jpg" },
+    { name: "The Love Below", src: "img/love-below.jpg" },
+    { name: "Cowboy Carter", src: "img/cowboy-carter.jpg" },
+    { name: "OK Computer", src: "img/ok-computer.jpg" },
+    { name: "Back To Black", src: "img/back-to-black.jpg" },
+    { name: "Tragic kingdom", src: "img/tragic-kingdom.jpg" },
+    { name: "Nirvana Unplugged", src: "img/nirvana-unplugged.jpg" },
+    { name: "Dark Side of the Moon", src: "img/dark-side-of-the-moon.jpg" },
+    { name: "Appetite For Destruction", src: "img/appetite-for-destruction.jpg" },
+    { name: "Illmatic", src: "img/illmatic.jpg" },
+    { name: "Chris Gaines", src: "img/chris-gaines.jpg" },
+    { name: "Songs in the Key of Life", src: "img/songs-in-key-of-life.jpg" },
+    { name: "Pet Sounds", src: "img/pet-sounds.jpg" },
+    { name: "London Calling", src: "img/london-calling.jpg" },
 ];
 
 let albums = [];
 let currentAlbumIndex = 0;
 let score = 0;
-let timeLeft = 45;
+let timeLeft = 30;
 let timerInterval;
 const gridSize = 8;
 let gridBoxes = [];
@@ -43,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function setupSplashScreen() {
     document.getElementById('medium-btn').addEventListener('click', () => startGame(mediumAlbums));
-    document.getElementById('hard-btn').addEventListener('click', () => startGame(hardAlbums));
 }
 
 function startGame(selectedAlbums) {
@@ -89,7 +83,7 @@ function checkGuess() {
         return;
     }
     if (userGuess === currentAlbum.name.toLowerCase()) {
-        feedback.textContent = "That's It!";
+        feedback.textContent = `That's it! The album is "${currentAlbum.name}".`;
         increaseScore();
         stopTimer();
         revealFullImage();
@@ -142,7 +136,7 @@ function increaseScore() {
 }
 
 function resetTimer() {
-    timeLeft = 45;
+    timeLeft = 30;
     document.getElementById('timer').textContent = timeLeft;
 }
 
@@ -160,9 +154,15 @@ function startTimer() {
 
         if (timeLeft <= 0) {
             stopTimer();
-            document.getElementById('feedback').textContent = `Time's up! The album was "${currentAlbum.name}".`;
+            document.getElementById('feedback').textContent = `Time's up! The album is "${currentAlbum.name}".`;
+            revealFullImage();
             currentAlbumIndex++;  // Move to the next album in sequence
-            setTimeout(startNewRound, 3000);  // Start a new round after 3 seconds
+            // if last album, show results
+            if (currentAlbumIndex === albums.length) {
+                showResults();
+            } else {
+                setTimeout(startNewRound, 3000);  // Start a new round after 3 seconds
+            }
         }
     }, 1000);  // Tick down every second
 }
@@ -174,12 +174,15 @@ function stopTimer() {
 function showResults() {
     document.getElementById('game-container').style.display = 'none';
     document.getElementById('results').style.display = 'block';
-    if (score <= albums.length) {
-        document.getElementById('results-text').textContent = "Congratulations! You've amped it up to eleven!";
+    let passingScore = (score / albums.length) * 100;
+
+    if (passingScore >= 70) {
+        document.getElementById('results-text-one').textContent = "Congratulations!";
+        document.getElementById('results-text-two').textContent = "You're a true music aficionado!";
+        document.getElementById('results-score').textContent = "You've scored " + score + " out of " + albums.length + "!";
     } else {
-        document.getElementById('results-text').textContent = "Bummer, you're not quite amped enough!";
+        document.getElementById('results-text-one').textContent = "Bummer!";
+        document.getElementById('results-text-two').textContent = "Please Try Again!";
+        document.getElementById('results-score').textContent = "You've scored " + score + " out of " + albums.length;
     }
 }
-
-
-// add option to pause game

@@ -14,23 +14,15 @@
 </head>
 <body>
     <div class="splash-screen" id="splash-screen">
-        <h1>Guess the Album!</h1>
-        <p>Select a difficulty level:</p>
-        <button id="medium-btn" class="btn difficulty">Regular</button>
-        <button id="hard-btn" class="btn difficulty">Ultra Pretentious</button>
+        <h1>Guess the Album Cover!</h1>
+        <p>In this guessing game, an album cover starts hidden behind a grid of obscured blocks, and as time progresses, the blocks are removed. Test your music knowledge and see how quickly you can identify the album!</p>
+        <button id="medium-btn" class="btn difficulty">Start!</button>
     </div>
 
     <div class="game-container" id="game-container" style="display:none;">
         <div class="info">
             <p class="score">Score: <span id="score">0</span> / <span id="totalQuestions">20</span></p>
             <p class="time">Time Remaining: <span id="timer">60</span>s</p>
-            <p id="pause-btn">
-                <svg width="1200pt" height="1200pt" version="1.1" viewBox="0 0 1200 1200" xmlns="http://www.w3.org/2000/svg">
-                    <path transform="matrix(12 0 0 12 0 -11428)" d="m25.967 966.28h48.961c6.5368 0 11.836 6.5368 11.836 11.836v48.961c0 6.5368-5.2992 11.836-11.836 11.836h-48.961c-6.5368 0-11.836-6.5368-11.836-11.836v-48.961c0-6.5368 5.2992-11.836 11.836-11.836z" fill="none" stroke="#6A3F26" stroke-width="2.3672"/>
-                    <path d="m408.69 359.39h149.89v486.96h-149.89z" fill="#6A3F26"/>
-                    <path d="m652.18 359.39h149.89v486.96h-149.89z" fill="#6A3F26"/>
-                </svg>
-            </p>
         </div>
         <div class="image-container">
             <img id="album-cover" src="" alt="Album cover">
@@ -44,7 +36,9 @@
     </div>
 
     <div id="results" class="results">
-        <p id="results-text"></p>
+        <p id="results-text-one" class="results-text"></p>
+        <p id="results-text-two"class="results-text"></p>
+        <p id="results-score"></p>
         <button id="play-again-btn" class="btn reset" onclick="location.reload()">Play Again</button>
     </div>
     

@@ -57,10 +57,10 @@ h1 {
     cursor: pointer;
     background-color: $oliveGreen;
     &.difficulty {
-        background-color: $mustardYellow;
+        background-color: $burntOrange;
         transition: all 0.3s ease;
         &:hover {
-            background-color: $rustRed;
+            background-color: $mustardYellow;
         }
     }
     &.submit {
@@ -85,7 +85,7 @@ h1 {
         position: relative;
         width: 450px; 
         height: 450px;
-        margin: 0 auto;
+        margin: 0 auto 10px auto;
         border: 5px solid $burntOrange;
     }
     #album-cover {
@@ -123,14 +123,15 @@ h1 {
     }
     #feedback {
         font-size: 18px;
-        margin-top: 10px;
-        min-height: 15px;
+        margin: 0;
+        min-height: 30px;
     }
     .info {
         display: flex;
         justify-content: space-between;
         font-size: 18px;
         font-family: $bodyText;
+        margin-bottom: 10px;
         p {
             padding: 0;
             margin: 0;
@@ -157,10 +158,19 @@ h1 {
     box-shadow: 0 5px 8px rgba(0, 0, 0, 0.1);
     max-width: 600px;
     margin: 0 auto;
-    #results-text {
+    .results-text {
         font-family: $primaryFont;
         font-size: 3rem;
         text-transform: uppercase;
+        color: $warmBrown;
+        margin: 0 0 15px 0;
+        &:first-child {
+            font-size: 2.2rem;
+        }
+    }
+    #results-score {
+        font-family: $bodyText;
+        font-size: 2rem;
         color: $warmBrown;
         margin: 0 0 20px 0;
     }
