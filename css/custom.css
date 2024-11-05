@@ -6,7 +6,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  margin: 0;
+  margin: 0 20px;
 }
 
 p {
@@ -71,10 +71,16 @@ h1 {
 }
 .game-container .image-container {
   position: relative;
-  width: 450px;
-  height: 450px;
+  width: 300px;
+  height: 300px;
   margin: 0 auto 10px auto;
   border: 5px solid #C55A11;
+}
+@media (min-width: 640px) {
+  .game-container .image-container {
+    width: 450px;
+    height: 450px;
+  }
 }
 .game-container #album-cover {
   width: 100%;
